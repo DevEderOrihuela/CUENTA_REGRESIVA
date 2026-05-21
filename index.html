@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>Nuestro Reencuentro ❤️</title>
 
@@ -20,18 +20,23 @@ body{
     font-family:'Poppins',sans-serif;
     min-height:100vh;
     overflow:hidden;
+    color:white;
+
     background:
     radial-gradient(circle at top,#ff4d88 0%,transparent 25%),
     radial-gradient(circle at bottom,#6a5cff 0%,transparent 30%),
     linear-gradient(135deg,#0f172a,#1e1b4b,#111827);
+
     display:flex;
     justify-content:center;
     align-items:center;
-    color:white;
+    padding:25px;
     position:relative;
 }
 
-/* Fondo romántico */
+/* =========================
+   CORAZONES FLOTANTES
+========================= */
 
 .hearts{
     position:absolute;
@@ -43,80 +48,124 @@ body{
 
 .heart{
     position:absolute;
+    bottom:-50px;
     color:rgba(255,255,255,0.15);
-    animation:float 10s linear infinite;
-    font-size:25px;
+    animation:float linear infinite;
 }
 
 @keyframes float{
     from{
-        transform:translateY(100vh) rotate(0deg);
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
     }
+
+    15%{
+        opacity:1;
+    }
+
     to{
         transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
     }
 }
 
-/* Contenedor */
+/* =========================
+   CONTENEDOR
+========================= */
 
 .container{
+    width:100%;
+    max-width:1100px;
+
     position:relative;
     z-index:2;
-    width:90%;
-    max-width:950px;
-    padding:40px;
-    border-radius:35px;
-    backdrop-filter:blur(15px);
+
     background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.15);
-    box-shadow:0 0 50px rgba(255,0,128,0.2);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    border-radius:35px;
+
+    padding:40px;
+
+    box-shadow:0 0 40px rgba(255,0,120,0.15);
+
     text-align:center;
 }
 
 .title{
-    font-size:3rem;
-    margin-bottom:10px;
-    background:linear-gradient(to right,#ff9ecf,#ffd166,#ff6ec7);
+    font-size:3.2rem;
+    font-weight:700;
+
+    background:linear-gradient(to right,#ffb3d9,#ffd166,#ff7ac6);
+
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
+
+    margin-bottom:12px;
 }
 
 .subtitle{
-    opacity:0.85;
-    margin-bottom:35px;
+    opacity:0.9;
+    margin-bottom:40px;
+    font-size:1.05rem;
 }
 
-/* Contadores */
+/* =========================
+   CUENTA REGRESIVA
+========================= */
 
-.grid{
+.countdown-container{
+    margin-bottom:45px;
+}
+
+.countdown-title{
+    font-size:1.4rem;
+    margin-bottom:25px;
+    color:#ffd166;
+}
+
+.countdown{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
 }
 
-.card{
-    padding:25px;
-    border-radius:25px;
+.time-box{
     background:rgba(255,255,255,0.08);
-    transition:0.4s;
+    border-radius:25px;
+    padding:25px 15px;
+
     position:relative;
     overflow:hidden;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:0.3s;
 }
 
-.card::before{
+.time-box:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,0.12);
+}
+
+.time-box::before{
     content:"";
     position:absolute;
     width:200%;
     height:200%;
-    background:linear-gradient(
-        45deg,
-        transparent,
-        rgba(255,255,255,0.08),
-        transparent
-    );
     top:-50%;
     left:-50%;
-    transform:rotate(25deg);
+
+    background:
+    linear-gradient(
+        45deg,
+        transparent,
+        rgba(255,255,255,0.07),
+        transparent
+    );
+
     animation:shine 5s linear infinite;
 }
 
@@ -129,31 +178,58 @@ body{
     }
 }
 
-.card:hover{
-    transform:translateY(-8px) scale(1.02);
+.time-number{
+    font-size:3rem;
+    font-weight:700;
+    margin-bottom:8px;
 }
 
-.card h2{
-    margin-bottom:10px;
+.time-label{
+    font-size:0.95rem;
+    opacity:0.8;
+}
+
+/* =========================
+   DÍAS TRANSCURRIDOS
+========================= */
+
+.days-card{
+    margin-top:35px;
+
+    background:rgba(255,255,255,0.08);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    display:inline-block;
+
+    min-width:260px;
+}
+
+.days-number{
+    font-size:3rem;
+    font-weight:700;
     color:#ffd166;
 }
 
-.number{
-    font-size:3.2rem;
-    font-weight:700;
+/* =========================
+   ANIMACIÓN
+========================= */
+
+.animation-section{
+    margin-top:55px;
 }
 
-/* Línea de amor */
-
-.love-section{
-    margin-top:50px;
+.animation-title{
+    font-size:1.5rem;
+    margin-bottom:35px;
 }
 
 .line-container{
     position:relative;
     width:100%;
-    height:220px;
-    margin-top:20px;
+    height:230px;
 }
 
 .line{
@@ -162,8 +238,11 @@ body{
     left:8%;
     width:84%;
     height:6px;
-    background:rgba(255,255,255,0.15);
-    border-radius:20px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,0.12);
+
     transform:translateY(-50%);
 }
 
@@ -171,28 +250,47 @@ body{
     position:absolute;
     top:50%;
     left:8%;
+
     width:0%;
+
     height:6px;
-    background:linear-gradient(to right,#ff4d88,#ffd166,#ff8ad8);
-    border-radius:20px;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(to right,#ff4d88,#ffd166,#ff7ac6);
+
     transform:translateY(-50%);
+
     box-shadow:0 0 20px #ff4d88;
+
     transition:1s;
 }
 
-/* Fotos */
+/* =========================
+   FOTOS
+========================= */
 
 .person{
     position:absolute;
+
     top:50%;
-    width:120px;
-    height:120px;
+
+    width:130px;
+    height:130px;
+
     border-radius:50%;
+
     overflow:hidden;
-    border:4px solid rgba(255,255,255,0.7);
-    box-shadow:0 0 25px rgba(255,255,255,0.3);
+
     transform:translate(-50%,-50%);
+
+    border:4px solid rgba(255,255,255,0.7);
+
+    box-shadow:0 0 30px rgba(255,255,255,0.25);
+
     transition:1s ease;
+
     animation:pulse 3s infinite;
 }
 
@@ -200,18 +298,6 @@ body{
     width:100%;
     height:100%;
     object-fit:cover;
-}
-
-@keyframes pulse{
-    0%{
-        transform:translate(-50%,-50%) scale(1);
-    }
-    50%{
-        transform:translate(-50%,-50%) scale(1.05);
-    }
-    100%{
-        transform:translate(-50%,-50%) scale(1);
-    }
 }
 
 .person1{
@@ -222,49 +308,130 @@ body{
     left:92%;
 }
 
+@keyframes pulse{
+
+    0%{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+    50%{
+        transform:translate(-50%,-50%) scale(1.05);
+    }
+
+    100%{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+}
+
 /* Corazón centro */
 
 .center-heart{
     position:absolute;
+
     top:50%;
     left:50%;
+
     transform:translate(-50%,-50%);
-    font-size:45px;
-    animation:heartbeat 1.2s infinite;
+
+    font-size:55px;
+
+    animation:heartbeat 1.3s infinite;
+
     text-shadow:0 0 20px #ff4d88;
 }
 
 @keyframes heartbeat{
-    0%{transform:translate(-50%,-50%) scale(1);}
-    25%{transform:translate(-50%,-50%) scale(1.2);}
-    40%{transform:translate(-50%,-50%) scale(1);}
-    60%{transform:translate(-50%,-50%) scale(1.2);}
-    100%{transform:translate(-50%,-50%) scale(1);}
+
+    0%{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+    25%{
+        transform:translate(-50%,-50%) scale(1.25);
+    }
+
+    40%{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+    60%{
+        transform:translate(-50%,-50%) scale(1.25);
+    }
+
+    100%{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
 }
 
+/* =========================
+   MENSAJE
+========================= */
+
 .message{
-    margin-top:35px;
-    font-size:1.2rem;
+    margin-top:40px;
+
+    font-size:1.15rem;
+
     line-height:1.8;
+
     opacity:0.92;
 }
 
 .quote{
-    margin-top:30px;
+    margin-top:25px;
     font-style:italic;
-    opacity:0.8;
+    opacity:0.75;
 }
 
 .footer{
-    margin-top:30px;
-    font-size:0.9rem;
+    margin-top:35px;
     opacity:0.7;
+    font-size:0.9rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .countdown{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
 
 @media(max-width:700px){
 
+    body{
+        padding:15px;
+    }
+
+    .container{
+        padding:25px 18px;
+        border-radius:28px;
+    }
+
     .title{
-        font-size:2.2rem;
+        font-size:2.1rem;
+    }
+
+    .subtitle{
+        font-size:0.95rem;
+    }
+
+    .countdown-title{
+        font-size:1.1rem;
+    }
+
+    .time-box{
+        padding:20px 10px;
+    }
+
+    .time-number{
+        font-size:2.1rem;
     }
 
     .person{
@@ -273,7 +440,45 @@ body{
     }
 
     .center-heart{
-        font-size:32px;
+        font-size:35px;
+    }
+
+    .animation-title{
+        font-size:1.1rem;
+    }
+
+    .message{
+        font-size:1rem;
+    }
+
+    .line-container{
+        height:180px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .countdown{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .time-number{
+        font-size:1.8rem;
+    }
+
+    .time-label{
+        font-size:0.8rem;
+    }
+
+    .person{
+        width:70px;
+        height:70px;
+    }
+
+    .days-number{
+        font-size:2.2rem;
     }
 
 }
@@ -283,7 +488,6 @@ body{
 
 <body>
 
-<!-- Corazones flotando -->
 <div class="hearts" id="hearts"></div>
 
 <div class="container">
@@ -291,32 +495,64 @@ body{
     <h1 class="title">Nuestro Reencuentro ❤️</h1>
 
     <p class="subtitle">
-        Cada día que pasa nos acerca más al abrazo que tanto esperamos ✨
+        Cada segundo que pasa nos acerca más al momento de volver a abrazarnos ✨
     </p>
 
-    <!-- Contadores -->
+    <!-- CUENTA REGRESIVA -->
 
-    <div class="grid">
+    <div class="countdown-container">
 
-        <div class="card">
-            <h2>Días que faltan 💌</h2>
-            <div class="number" id="diasFaltan">0</div>
+        <div class="countdown-title">
+            Tiempo para volver a vernos 💕
         </div>
 
-        <div class="card">
-            <h2>Días separados 🥺</h2>
-            <div class="number" id="diasPasados">0</div>
+        <div class="countdown">
+
+            <div class="time-box">
+                <div class="time-number" id="days">0</div>
+                <div class="time-label">DÍAS</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="hours">0</div>
+                <div class="time-label">HORAS</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="minutes">0</div>
+                <div class="time-label">MINUTOS</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="seconds">0</div>
+                <div class="time-label">SEGUNDOS</div>
+            </div>
+
+        </div>
+
+        <!-- Días separados -->
+
+        <div class="days-card">
+
+            <div style="margin-bottom:10px;">
+                Días separados 🥺
+            </div>
+
+            <div class="days-number" id="diasPasados">
+                0
+            </div>
+
         </div>
 
     </div>
 
-    <!-- Animación -->
+    <!-- ANIMACIÓN -->
 
-    <div class="love-section">
+    <div class="animation-section">
 
-        <h2>
+        <div class="animation-title">
             Poco a poco volvemos a encontrarnos 💖
-        </h2>
+        </div>
 
         <div class="line-container">
 
@@ -326,15 +562,17 @@ body{
 
             <!-- FOTO 1 -->
             <div class="person person1" id="person1">
-                <img src="foto1.jpg" alt="Persona 1">
+                <img src="foto1.jpg" alt="Foto 1">
             </div>
 
             <!-- FOTO 2 -->
             <div class="person person2" id="person2">
-                <img src="foto2.jpg" alt="Persona 2">
+                <img src="foto2.jpg" alt="Foto 2">
             </div>
 
-            <div class="center-heart">❤️</div>
+            <div class="center-heart">
+                ❤️
+            </div>
 
         </div>
 
@@ -349,110 +587,168 @@ body{
     </div>
 
     <div class="footer">
-        Hecho con muchísimo amor para mi Rosadita Hermosa 💗
+        Hecho con muchísimo amor para mi Rosadita Hermosa💗
     </div>
 
 </div>
 
 <script>
 
-/* ==========================
+/* ===================================
    CONFIGURA TUS FECHAS
-========================== */
+=================================== */
 
 // Fecha cuando comenzó la distancia
-const fechaInicio = new Date("2026-05-10");
+const fechaInicio = new Date("2026-05-10T05:00:00");
 
 // Fecha del reencuentro
-const fechaReencuentro = new Date("2026-06-18");
+const fechaReencuentro = new Date("2026-06-18T21:00:00");
 
-/* ========================== */
+/* =================================== */
 
-const hoy = new Date();
+function actualizarContador(){
 
-const totalTiempo = fechaReencuentro - fechaInicio;
-const tiempoPasado = hoy - fechaInicio;
-const tiempoRestante = fechaReencuentro - hoy;
+    const ahora = new Date();
 
-// Días
-const diasPasados = Math.max(
-    0,
-    Math.floor(tiempoPasado / (1000*60*60*24))
-);
+    const diferencia = fechaReencuentro - ahora;
 
-const diasFaltan = Math.max(
-    0,
-    Math.ceil(tiempoRestante / (1000*60*60*24))
-);
+    // TIEMPO RESTANTE
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
 
-// Mostrar
-document.getElementById("diasPasados").innerText = diasPasados;
-document.getElementById("diasFaltan").innerText = diasFaltan;
+    const horas = Math.floor(
+        (diferencia % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
 
-// Progreso
-let progreso = (tiempoPasado / totalTiempo) * 100;
+    const minutos = Math.floor(
+        (diferencia % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
 
-if(progreso < 0) progreso = 0;
-if(progreso > 100) progreso = 100;
+    const segundos = Math.floor(
+        (diferencia % (1000 * 60))
+        / 1000
+    );
 
-// Barra
-document.getElementById("progress").style.width = progreso + "%";
+    document.getElementById("days").innerText =
+        dias < 10 ? "0"+dias : dias;
 
-// Movimiento de fotos
-const inicio1 = 8;
-const inicio2 = 92;
+    document.getElementById("hours").innerText =
+        horas < 10 ? "0"+horas : horas;
 
-const pos1 = inicio1 + (progreso * 0.42);
-const pos2 = inicio2 - (progreso * 0.42);
+    document.getElementById("minutes").innerText =
+        minutos < 10 ? "0"+minutos : minutos;
 
-document.getElementById("person1").style.left = pos1 + "%";
-document.getElementById("person2").style.left = pos2 + "%";
+    document.getElementById("seconds").innerText =
+        segundos < 10 ? "0"+segundos : segundos;
 
-// Mensajes dinámicos
-const mensaje = document.getElementById("mensaje");
+    // DÍAS PASADOS
+    const tiempoPasado = ahora - fechaInicio;
 
-if(progreso < 25){
-    mensaje.innerHTML =
-    "Te extraño un poquito más cada día, pero también estamos más cerca de volver 💌";
+    const diasPasados = Math.floor(
+        tiempoPasado / (1000*60*60*24)
+    );
+
+    document.getElementById("diasPasados").innerText =
+        diasPasados;
+
+    // PROGRESO
+    const totalTiempo = fechaReencuentro - fechaInicio;
+
+    let progreso = (tiempoPasado / totalTiempo) * 100;
+
+    if(progreso < 0) progreso = 0;
+    if(progreso > 100) progreso = 100;
+
+    document.getElementById("progress").style.width =
+        progreso + "%";
+
+    // MOVIMIENTO DE FOTOS
+
+    const inicio1 = 8;
+    const inicio2 = 92;
+
+    const pos1 = inicio1 + (progreso * 0.42);
+    const pos2 = inicio2 - (progreso * 0.42);
+
+    document.getElementById("person1").style.left =
+        pos1 + "%";
+
+    document.getElementById("person2").style.left =
+        pos2 + "%";
+
+    // MENSAJES
+
+    const mensaje = document.getElementById("mensaje");
+
+    if(progreso < 25){
+
+        mensaje.innerHTML =
+        "Te extraño un poquito más cada día, pero también estamos más cerca de volver 💌";
+
+    }
+    else if(progreso < 50){
+
+        mensaje.innerHTML =
+        "Cada noche es una menos para volver a perderme en tus abrazos ✨";
+
+    }
+    else if(progreso < 75){
+
+        mensaje.innerHTML =
+        "Ya recorrimos gran parte del camino... pronto volveré a verte 💕";
+
+    }
+    else if(progreso < 100){
+
+        mensaje.innerHTML =
+        "Falta muy poquito para volver a encontrarnos mi amor 🥹❤️";
+
+    }
+    else{
+
+        mensaje.innerHTML =
+        "Después de tanta espera... al fin juntos otra vez 💖";
+
+    }
+
 }
-else if(progreso < 50){
-    mensaje.innerHTML =
-    "Cada noche es una menos para volver a perderme en tus abrazos ✨";
-}
-else if(progreso < 75){
-    mensaje.innerHTML =
-    "Ya recorrimos gran parte del camino... pronto volveré a verte 💕";
-}
-else if(progreso < 100){
-    mensaje.innerHTML =
-    "Falta muy poquito para volver a encontrarnos mi amor 🥹❤️";
-}
-else{
-    mensaje.innerHTML =
-    "Después de tanta espera... al fin juntos otra vez 💖";
-}
 
-/* Corazones flotantes */
+setInterval(actualizarContador,1000);
+
+actualizarContador();
+
+/* ===================================
+   CORAZONES FLOTANTES
+=================================== */
 
 const hearts = document.getElementById("hearts");
 
-for(let i=0;i<40;i++){
+for(let i=0;i<45;i++){
 
     const heart = document.createElement("div");
 
     heart.classList.add("heart");
 
-    heart.innerHTML = ["❤️","💖","💕","💗"][Math.floor(Math.random()*4)];
+    const emojis = ["❤️","💖","💕","💗"];
 
-    heart.style.left = Math.random()*100 + "%";
+    heart.innerHTML =
+        emojis[Math.floor(Math.random()*emojis.length)];
 
-    heart.style.fontSize = (15 + Math.random()*30) + "px";
+    heart.style.left =
+        Math.random()*100 + "%";
 
-    heart.style.animationDuration = (6 + Math.random()*10) + "s";
+    heart.style.fontSize =
+        (15 + Math.random()*30) + "px";
 
-    heart.style.animationDelay = Math.random()*5 + "s";
+    heart.style.animationDuration =
+        (7 + Math.random()*10) + "s";
+
+    heart.style.animationDelay =
+        Math.random()*5 + "s";
 
     hearts.appendChild(heart);
+
 }
 
 </script>
