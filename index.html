@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cuenta Regresiva ❤️</title>
+
+<!-- Fuente -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    overflow:hidden;
+    background:linear-gradient(135deg,#111827,#1f2937,#312e81);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+/* Fondo animado */
+.stars{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:0;
+}
+
+.stars span{
+    position:absolute;
+    display:block;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation: twinkle 3s infinite alternate;
+    opacity:0.6;
+}
+
+@keyframes twinkle{
+    from{opacity:0.2;}
+    to{opacity:1;}
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:900px;
+    text-align:center;
+    padding:40px;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:30px;
+    box-shadow:0 0 40px rgba(0,0,0,0.4);
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:10px;
+    background:linear-gradient(to right,#ff7eb3,#ffd166);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+    margin-bottom:35px;
+    opacity:0.85;
+}
+
+.counter-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+    margin-bottom:40px;
+}
+
+.card{
+    background:rgba(255,255,255,0.07);
+    border-radius:20px;
+    padding:25px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,0.12);
+}
+
+.card h2{
+    font-size:1.1rem;
+    margin-bottom:10px;
+    color:#ffd166;
+}
+
+.number{
+    font-size:3rem;
+    font-weight:700;
+}
+
+/* Animación */
+.animation-zone{
+    margin-top:30px;
+}
+
+.line-container{
+    position:relative;
+    width:100%;
+    height:140px;
+    margin-top:30px;
+}
+
+.line{
+    position:absolute;
+    top:50%;
+    left:5%;
+    width:90%;
+    height:5px;
+    background:rgba(255,255,255,0.2);
+    border-radius:10px;
+    transform:translateY(-50%);
+}
+
+.progress{
+    position:absolute;
+    top:50%;
+    left:5%;
+    height:5px;
+    width:0%;
+    background:linear-gradient(to right,#ff7eb3,#ffd166);
+    border-radius:10px;
+    transform:translateY(-50%);
+    transition:1s;
+}
+
+.person{
+    position:absolute;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-size:3rem;
+    transition:1s ease;
+}
+
+.person1{
+    left:5%;
+}
+
+.person2{
+    left:95%;
+}
+
+.message{
+    margin-top:30px;
+    font-size:1.1rem;
+    opacity:0.9;
+    line-height:1.7;
+}
+
+.heart{
+    animation:pulse 1.5s infinite;
+    display:inline-block;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+
+.footer{
+    margin-top:25px;
+    opacity:0.7;
+    font-size:0.9rem;
+}
+
+@media(max-width:700px){
+
+    h1{
+        font-size:2rem;
+    }
+
+    .number{
+        font-size:2.3rem;
+    }
+
+    .person{
+        font-size:2.2rem;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- Estrellas -->
+<div class="stars" id="stars"></div>
+
+<div class="container">
+
+    <h1>Volveremos a Encontrarnos ❤️</h1>
+
+    <p class="subtitle">
+        Cada día es un paso más cerca de volver a verte ✨
+    </p>
+
+    <div class="counter-grid">
+
+        <div class="card">
+            <h2>Días que faltan</h2>
+            <div class="number" id="diasFaltan">0</div>
+        </div>
+
+        <div class="card">
+            <h2>Días transcurridos</h2>
+            <div class="number" id="diasPasados">0</div>
+        </div>
+
+    </div>
+
+    <!-- Animación -->
+    <div class="animation-zone">
+
+        <h2 style="margin-bottom:20px;">
+            Nos acercamos poco a poco <span class="heart">💖</span>
+        </h2>
+
+        <div class="line-container">
+
+            <div class="line"></div>
+            <div class="progress" id="progress"></div>
+
+            <div class="person person1" id="person1">🧑</div>
+            <div class="person person2" id="person2">👩</div>
+
+        </div>
+
+    </div>
+
+    <div class="message" id="mensaje">
+        Aunque la distancia exista, cada día nos acerca más 💕
+    </div>
+
+    <div class="footer">
+        Hecho con amor ❤️
+    </div>
+
+</div>
+
+<script>
+
+/* ========= CONFIGURA TUS FECHAS ========= */
+
+// Fecha cuando se separaron
+const fechaInicio = new Date("2026-01-01");
+
+// Fecha cuando volverán a verse
+const fechaReencuentro = new Date("2026-12-31");
+
+/* ======================================= */
+
+const hoy = new Date();
+
+// Diferencias
+const totalTiempo = fechaReencuentro - fechaInicio;
+const tiempoPasado = hoy - fechaInicio;
+const tiempoRestante = fechaReencuentro - hoy;
+
+// Días
+const diasPasados = Math.max(
+    0,
+    Math.floor(tiempoPasado / (1000 * 60 * 60 * 24))
+);
+
+const diasFaltan = Math.max(
+    0,
+    Math.ceil(tiempoRestante / (1000 * 60 * 60 * 24))
+);
+
+// Mostrar datos
+document.getElementById("diasPasados").innerText = diasPasados;
+document.getElementById("diasFaltan").innerText = diasFaltan;
+
+// Progreso
+let progreso = (tiempoPasado / totalTiempo) * 100;
+
+if(progreso < 0) progreso = 0;
+if(progreso > 100) progreso = 100;
+
+// Barra
+document.getElementById("progress").style.width = progreso + "%";
+
+// Movimiento personas
+const inicio1 = 5;
+const inicio2 = 95;
+
+const pos1 = inicio1 + (progreso * 0.45);
+const pos2 = inicio2 - (progreso * 0.45);
+
+document.getElementById("person1").style.left = pos1 + "%";
+document.getElementById("person2").style.left = pos2 + "%";
+
+// Mensajes dinámicos
+const mensaje = document.getElementById("mensaje");
+
+if(progreso < 25){
+    mensaje.innerHTML = "La distancia es difícil, pero el amor siempre encuentra el camino 💌";
+}
+else if(progreso < 50){
+    mensaje.innerHTML = "Cada amanecer significa un día menos para abrazarte ✨";
+}
+else if(progreso < 75){
+    mensaje.innerHTML = "Ya recorrimos gran parte del camino juntos 💕";
+}
+else if(progreso < 100){
+    mensaje.innerHTML = "Falta muy poco para volver a encontrarnos 🥹❤️";
+}
+else{
+    mensaje.innerHTML = "¡Por fin juntos otra vez! 💖";
+}
+
+/* Estrellas */
+const stars = document.getElementById("stars");
+
+for(let i=0;i<100;i++){
+
+    const star = document.createElement("span");
+
+    star.style.left = Math.random()*100 + "%";
+    star.style.top = Math.random()*100 + "%";
+
+    star.style.animationDelay = Math.random()*3 + "s";
+
+    stars.appendChild(star);
+}
+
+</script>
+
+</body>
+</html>
